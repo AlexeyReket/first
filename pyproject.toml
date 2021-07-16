@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "first"
+version = "0.1.0"
+description = ""
+authors = ["AlexeyReket <alexey.reket@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pyTelegramBotAPI = "^3.8.1"
+alembic = "^1.4"
+bs4 = "^0.0.1"
+selenium = "^3.141.0"
+gino = "^1.0.1"
+lxml = "^4.6.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -2,7 +2,8 @@ import types
 import sqlite3
 import telebot
 
-bot = telebot.TeleBot('1850300412:AAHqv9G4XaMvVZp4IPVOhl6I2y04ogsH6o4')
+bot = telebot.TeleBot(''
+                      '1850300412:AAHqv9G4XaMvVZp4IPVOhl6I2y04ogsH6o4')
 name = ""
 surname = ""
 age = 0

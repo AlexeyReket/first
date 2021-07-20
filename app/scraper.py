@@ -1,10 +1,29 @@
+import time
+
 import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
+options = webdriver.ChromeOptions()
+# options.add_argument('headless')  # для открытия headless-браузера
+browser = webdriver.Chrome(chrome_options=options)
 
-url = 'https://idp.grsu.by/simplesaml/module.php/core/loginuserpass.php?AuthState=_0b15103dd86ab2582b3b42e58df7db991b2af328ed%3Ahttps%3A%2F%2Fidp.grsu.by%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fedu.grsu.by%252Fauth%252Fsaml2%252Fsp%252Fmetadata.php%26RelayState%3Dhttps%253A%252F%252Fedu.grsu.by%252Fauth%252Fsaml2%252Flogin.php%253Fwants%253Dhttps%25253A%25252F%25252Fedu.grsu.by%25252Fmy%25252F%26cookieTime%3D1626433625'
-response = requests.get(url)
-soup = BeautifulSoup(response.text, 'lxml')
-quotes = soup.find_all('div')
+url = 'https://www.grsu.by/e-raspisanie/student.html'
+browser.get(url)
+# Поиск тегов по имени
 
+Faculty_chosen = browser.find_element_by_xpath("//div[@title_id='ddlFaculty_chosen']")
+Faculty_chosen.click()
+"""login = browser.find_element_by_id("username")
 
-print(quotes)
+log_but = browser.find_element_by_xpath("//button[@class='btn waves-effect waves-light blue darken-2']")
+log_but.click()
+url += "/my/"
+browser.get(url)
+btn = browser.find_element_by_id("schedule")
+btn.click()
+time.sleep(10)
+table = browser.find_element_by_xpath("//ul[@role='tablist']")
+
+print(table.get_attribute("text"))
+browser.close()
+"""

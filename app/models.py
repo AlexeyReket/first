@@ -42,10 +42,3 @@ class TimeTable:
     subjects: [str]
     timings: [str]
 
-
-fac = Faculty("ФаМИ")
-course = Course(1)
-form = Form("Дневная")
-group = StudentGroup("СДП-МАТ-201", fac, course, form)
-timeTable = TimeTable(group, ["1", "2", "3"], ["10:05", "11:40", "13:30"])
-print(timeTable)

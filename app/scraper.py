@@ -11,7 +11,7 @@ url = 'https://www.grsu.by/e-raspisanie/student.html'
 browser.get(url)
 # Поиск тегов по имени
 
-Faculty_chosen = browser.find_element_by_xpath("//div[@title_id='ddlFaculty_chosen']")
+Faculty_chosen = browser.find_element_by_xpath("//div[@style='width: 371px;']")
 Faculty_chosen.click()
 """login = browser.find_element_by_id("username")
 

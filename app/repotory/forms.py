@@ -1,0 +1,23 @@
+from dataclasses import dataclass
+
+from app.repotory.basemodels import Base
+
+
+@dataclass
+class Form(Base):
+    id: int
+    type: str = None
+
+    def get(self):
+        list_columns = self.engine.execute(f"SELECT * FROM {self.tablename} WHERE id={self.id}").fetchall()
+        self.id, self.type = list_columns[0]
+        return self
+
+    def save(self):
+        self.engine.execute(f"INSERT INTO {self.tablename} (id,type) VALUES ({self.id},'{self.type}')")
+
+    def update(self):
+        self.engine.execute(f"UPDATE {self.tablename} SET type='{self.type}' WHERE id={self.id}")
+
+    def delete(self):
+        self.engine.execute(f"DELETE FROM {self.tablename} WHERE id={self.id}")

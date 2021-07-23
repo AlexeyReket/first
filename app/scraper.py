@@ -1,10 +1,21 @@
+import time
+
 import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
 
-url = 'https://idp.grsu.by/simplesaml/module.php/core/loginuserpass.php?AuthState=_0b15103dd86ab2582b3b42e58df7db991b2af328ed%3Ahttps%3A%2F%2Fidp.grsu.by%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fedu.grsu.by%252Fauth%252Fsaml2%252Fsp%252Fmetadata.php%26RelayState%3Dhttps%253A%252F%252Fedu.grsu.by%252Fauth%252Fsaml2%252Flogin.php%253Fwants%253Dhttps%25253A%25252F%25252Fedu.grsu.by%25252Fmy%25252F%26cookieTime%3D1626433625'
-response = requests.get(url)
-soup = BeautifulSoup(response.text, 'lxml')
-quotes = soup.find_all('div')
+options = webdriver.ChromeOptions()
+# options.add_argument('headless')  # для открытия headless-браузера
+browser = webdriver.Chrome(chrome_options=options)
 
+url = 'https://www.yandex.by'
+browser.get(url)
+Faculty_chosen = browser.find_element_by_xpath("//div//form//div//input[@id='text']")
+Faculty_chosen.send_keys("Танос")
+search = browser.find_element_by_xpath("//button[@role='button']")
+search.click()
 
-print(quotes)
+"""url = "https://www.grsu.by/e-raspisanie/student.html"
+browser.get(url)
+browser.find_element_by_xpath("//input[@id='username']/following-sibling:input[1]")
+"""
